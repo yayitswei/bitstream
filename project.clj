@@ -1,4 +1,4 @@
-(defproject video "0.1.0-SNAPSHOT"
+(defproject froggychat "0.1.0-SNAPSHOT"
   :description "FIXME: write description"
   :url "http://example.com/FIXME"
   :dependencies [[org.clojure/clojure "1.5.1"]
@@ -9,7 +9,7 @@
                  [hiccup "1.0.2"]
                  [http-kit "2.0.0"]]
   :plugins [[lein-ring "0.8.3"]]
-  :ring {:handler video.handler/app}
-  :main video.handler
+  :ring {:handler froggychat.handler/app}
+  :main froggychat.handler
   :profiles
   {:dev {:dependencies [[ring-mock "0.1.3"]]}})

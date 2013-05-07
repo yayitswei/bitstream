@@ -1,4 +1,4 @@
-(ns video.handler
+(ns froggychat.handler
   (:gen-class)
   (:use compojure.core
         [hiccup.page :only [html5 include-css include-js]]
@@ -11,29 +11,26 @@
 
 (def prod? (System/getenv "LEIN_NO_DEV"))
 
-(defn qr-code-src [addr]
-  (str "https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=" addr))
-
 (defn layout [& {:keys [content script]}]
   (html
     [:head
-     [:title "Bitcoin streams"]]
-    [:body.wall
+     [:title "Froggychat"]]
+    [:body.froggychat
      content
      (include-css "/css/styles.css")
      (include-js "http://simplewebrtc.com/latest.js")
-     (include-js "/js/init.js")
      (include-css "//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css")
      (include-js "http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js")
      (include-js "//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js")
+     (include-js "/js/init.js")
      script]))
 
 (defn index []
   (layout :content
-          [:div.content
-           [:img {:src (qr-code-src "1EM3wNVrLLaXofcJTvhzzPHuk3Nr8a72f2")}]
-           [:div#localVideo]
-           [:div#remotesVideos]]))
+          [:div.container
+           [:h1 "Wei and Dawn's Froggychat"]
+           [:div#remotesVideos.videobox]
+           [:div#localVideo.videobox]]))
 
 (defroutes app-routes
   (GET "/" [] (index))

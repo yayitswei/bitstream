@@ -1,1 +1,14 @@
 ls
+(map (fn [x] (+ 1 x)) [1 2 3 4])
+(mapp (fn [x] (+ 1 x)) [1 2 3 4])
+(pmap (fn [x] (+ 1 x)) [1 2 3 4])
+(time (pmap (fn [x] (+ 1 x)) [1 2 3 4]))
+(time (map (fn [x] (+ 1 x)) [1 2 3 4]))
+(time (pmap (fn [x] (+ 1 x)) [1 2 3 4]))
+(future (+ 1 2))
+@(future (+ 1 2))
+(def a (future (+ 1 2)))
+(time @a)
+(def a (future (apply + (range 100000000))))
+a
+(time @a)
