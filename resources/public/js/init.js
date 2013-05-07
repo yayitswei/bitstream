@@ -7,18 +7,10 @@ var webrtc = new WebRTC({
     autoRequestMedia: true
 });
 
-webrtc.createRoom("myroom123", function (err, name) {
-  var newUrl = location.pathname + '?' + name;
-  if (!err) {
-    history.replaceState({foo: 'bar'}, null, newUrl);
-    console.log("created room: " + name);
-  }
-});
-
 // we have to wait until it's ready
 webrtc.on('readyToCall', function () {
     // you can name it anything
-    webrtc.joinRoom('myroom123');
+    webrtc.joinRoom('froggychat');
 });
 
 
